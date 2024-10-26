@@ -1,8 +1,8 @@
 name: Run Fooocus
 
 on:
-  workflow_dispatch: # Permite execução manual pelo GitHub Actions
-  push: # Opcional: Executa em todo push
+  workflow_dispatch:
+  push:
 
 jobs:
   run-fooocus:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: '3.9'  # Atualizado para 3.9 para compatibilidade com pygit2
 
       - name: Install dependencies
         run: |
@@ -25,7 +25,6 @@ jobs:
       - name: Clone Fooocus repository
         run: |
           git clone https://github.com/lllyasviel/Fooocus.git
-          cd Fooocus
 
       - name: Run Fooocus
         run: |
