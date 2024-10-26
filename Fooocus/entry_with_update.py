@@ -1,5 +1,7 @@
-import os
 import sys
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"  # Força o uso da CPU
+
 
 
 root = os.path.dirname(os.path.abspath(__file__))
