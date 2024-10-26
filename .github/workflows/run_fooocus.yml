@@ -15,19 +15,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.10'  # Usar Python 3.10 para compatibilidade
+          python-version: '3.10'  # Use uma versão compatível do Python
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pygit2==1.15.1 packaging  # Instalar pacotes necessários
-          pip install -r Fooocus/requirements_versions.txt  # Instalar dependências do Fooocus
+          pip install pygit2==1.15.1 packaging  # Instale pacotes necessários
+          pip install -r Fooocus/requirements_versions.txt  # Instale as dependências do Fooocus
 
       - name: Set environment variable to use CPU
         run: |
-          echo "CUDA_VISIBLE_DEVICES=" >> $GITHUB_ENV  # Adiciona variável de ambiente
+          echo "CUDA_VISIBLE_DEVICES=" >> $GITHUB_ENV  # Adiciona variável de ambiente para garantir que a CPU seja usada
 
       - name: Run Fooocus
         run: |
           cd Fooocus
-          python3 entry_with_update.py --share --always-high-vram
+          python entry_with_update.py --share --always-high-vram  # Execute seu script principal
