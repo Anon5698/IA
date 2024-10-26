@@ -1,0 +1,5 @@
+torch==1.13.0  # Altere conforme a necessidade
+scipy==1.11.4
+pygit2==1.15.1
+packaging
+# Adicione outras dependências conforme necessário
