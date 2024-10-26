@@ -1,0 +1,33 @@
+name: Run Fooocus
+
+on:
+  workflow_dispatch: # Permite execução manual pelo GitHub Actions
+  push: # Opcional: Executa em todo push
+
+jobs:
+  run-fooocus:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pygit2==1.15.1
+
+      - name: Clone Fooocus repository
+        run: |
+          git clone https://github.com/lllyasviel/Fooocus.git
+          cd Fooocus
+
+      - name: Run Fooocus
+        run: |
+          cd Fooocus
+          python3 entry_with_update.py --share --always-high-vram
